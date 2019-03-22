@@ -26,7 +26,12 @@ class Temperature:
 	'''
 	Private checks if temperature obeys laws of physics
 	'''
-
+	def __makeLegalTemperature(self, K):
+		# TODO: Ensure type is int, float, or double
+		if K < 0:
+			return 0
+		else:
+			return K
 
 	'''
 	Handles Celsius as Kelvin
@@ -37,7 +42,7 @@ class Temperature:
 	@celsius.setter
 	def celsius(self, C):
 		# Stores Kelvin & Celsius
-		self.kelvin = self.__celsiusToKelvin(C)
+		self.kelvin = self.__makeLegalTemperature(self.__celsiusToKelvin(C))
 	@celsius.getter
 	def celsius(self):
 		# Retrieves Celsius from Kelvin
@@ -52,7 +57,7 @@ class Temperature:
 	@fahrenheit.setter
 	def fahrenheit(self, F):
 		# Stores Fahrenheit as Kelvin 
-		self.kelvin = self.__fahrenheitToKelvin(F)
+		self.kelvin = self.__makeLegalTemperature(self.__fahrenheitToKelvin(F))
 	@fahrenheit.getter
 	def fahrenheit(self):
 		# Retrieves Fahrenheit from Kelvin
@@ -63,5 +68,6 @@ class Temperature:
 	
 		
 t = Temperature()
-t.fahrenheit = 100 
+# Fix Kelvin error check not working
+t.kelvin = -10 
 print(t.kelvin)
