@@ -27,6 +27,7 @@ class Temperature:
 	Private checks if temperature obeys laws of physics
 	'''
 
+
 	'''
 	Handles Celsius as Kelvin
 	'''
@@ -36,11 +37,11 @@ class Temperature:
 	@celsius.setter
 	def celsius(self, C):
 		# Stores Kelvin & Celsius
-		self._kelvin = self.__celsiusToKelvin(C)
+		self.kelvin = self.__celsiusToKelvin(C)
 	@celsius.getter
 	def celsius(self):
 		# Retrieves Celsius from Kelvin
-		return self.__kelvinToCelsius(self._kelvin)
+		return self.__kelvinToCelsius(self.kelvin)
 
 	'''
 	Handles Fahrenheit as Kelvin
@@ -51,19 +52,16 @@ class Temperature:
 	@fahrenheit.setter
 	def fahrenheit(self, F):
 		# Stores Fahrenheit as Kelvin 
-		self._kelvin = self.__fahrenheitToKelvin(F)
+		self.kelvin = self.__fahrenheitToKelvin(F)
 	@fahrenheit.getter
 	def fahrenheit(self):
 		# Retrieves Fahrenheit from Kelvin
-		return self.__kelvinToFahrenheit(self._kelvin)
-	'''
-	TODO: Write Kelvin non-temporary handler
-	'''
+		return self.__kelvinToFahrenheit(self.kelvin)
 	'''
 	TODO: Write unit testing functions
 	'''
 	
 		
 t = Temperature()
-t.celsius = 100
-print(t.fahrenheit)
+t.fahrenheit = 100 
+print(t.kelvin)
