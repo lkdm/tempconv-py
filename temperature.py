@@ -24,31 +24,42 @@ class Temperature:
 		return 9/5 (K - 273) + 32
 
 	'''
-	Also store Celsius as Kelvin
+	Private checks if temperature obeys laws of physics
+	'''
+
+	'''
+	Handles Celsius as Kelvin
 	'''
 	@property
 	def celsius(self):
-		return self._celsius
+		pass
 	@celsius.setter
 	def celsius(self, C):
 		# Stores Kelvin & Celsius
-		self._celsius = C
 		self._kelvin = self.__celsiusToKelvin(C)
-		print(self.__celsiusToKelvin(C))
 	@celsius.getter
 	def celsius(self):
 		# Retrieves Celsius from Kelvin
 		return self.__kelvinToCelsius(self._kelvin)
 
 	'''
-	TODO: Duplicate above code for Fahrenheit
+	Handles Fahrenheit as Kelvin
 	'''
-
+	def fahrenheit(self):
+		pass
+	@fahrenheit.setter
+	def fahrenheit(self, F):
+		# Stores Fahrenheit as Kelvin 
+		self._kelvin = self.__fahrenheitToKelvin(F)
+	@fahrenheit.getter
+	def fahrenheit(self):
+		# Retrieves Fahrenheit from Kelvin
+		return self.__kelvintoFahrenheit(self._kelvin)
 	'''
 	Testing functions
 	'''
 	
 		
 t = Temperature()
-t._kelvin = 100
-print(t.celsius)
+t.celsius = 100
+print(t.fahrenheit)
