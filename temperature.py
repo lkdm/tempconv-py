@@ -57,7 +57,10 @@ class Temperature:
 		# Retrieves Fahrenheit from Kelvin
 		return self.__kelvinToFahrenheit(self._kelvin)
 	'''
-	Testing functions
+	TODO: Write Kelvin non-temporary handler
+	'''
+	'''
+	TODO: Write unit testing functions
 	'''
 	
 		
