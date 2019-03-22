@@ -19,9 +19,9 @@ class Temperature:
 	Private Fahrenheit/Kelvin conversions
 	'''
 	def __fahrenheitToKelvin(self, F):
-		return 5/9 (F - 32) + 273
+		return 5/9 * (F - 32) + 273
 	def __kelvinToFahrenheit(self, K):
-		return 9/5 (K - 273) + 32
+		return 9/5 * (K - 273) + 32
 
 	'''
 	Private checks if temperature obeys laws of physics
@@ -45,6 +45,7 @@ class Temperature:
 	'''
 	Handles Fahrenheit as Kelvin
 	'''
+	@property
 	def fahrenheit(self):
 		pass
 	@fahrenheit.setter
@@ -54,7 +55,7 @@ class Temperature:
 	@fahrenheit.getter
 	def fahrenheit(self):
 		# Retrieves Fahrenheit from Kelvin
-		return self.__kelvintoFahrenheit(self._kelvin)
+		return self.__kelvinToFahrenheit(self._kelvin)
 	'''
 	Testing functions
 	'''
