@@ -62,12 +62,3 @@ class Temperature:
 	def fahrenheit(self):
 		# Retrieves Fahrenheit from Kelvin
 		return self.__kelvinToFahrenheit(self.kelvin)
-	'''
-	TODO: Write unit testing functions
-	'''
-	
-		
-t = Temperature()
-# Fix Kelvin error check not working
-t.kelvin = -10 
-print(t.kelvin)
