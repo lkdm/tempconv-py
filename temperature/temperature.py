@@ -1,6 +1,6 @@
 # Temperature library
 
-# Store as Kelvin
+from decimal import *
 
 class Temperature:
 	'''
@@ -8,16 +8,12 @@ class Temperature:
 	'''
 	def __init__(self):
 		pass
-
-
-	def _test(self):
-		return True
 	
 	'''
 	Private Kelvin/Celsius conversions
 	'''
 	def _celsiusToKelvin(self, C):
-		return C + 273.15
+		return round(C + 273.15, 2)
 	def _kelvinToCelsius(self, K):
 		return K - 273.15
 	'''
@@ -29,16 +25,6 @@ class Temperature:
 		return 9/5 * (K - 273) + 32
 
 	'''
-	Private checks if temperature obeys laws of physics
-	'''
-	def _makeLegalTemperature(self, K):
-		# TODO: Ensure type is int, float, or double
-		if K < 0:
-			return 0
-		else:
-			return K
-
-	'''
 	Handles Celsius as Kelvin
 	'''
 	@property
@@ -47,7 +33,7 @@ class Temperature:
 	@celsius.setter
 	def celsius(self, C):
 		# Stores Kelvin & Celsius
-		self.kelvin = self._makeLegalTemperature(self._celsiusToKelvin(C))
+		self.kelvin = self._celsiusToKelvin(C)
 	@celsius.getter
 	def celsius(self):
 		# Retrieves Celsius from Kelvin
@@ -62,7 +48,7 @@ class Temperature:
 	@fahrenheit.setter
 	def fahrenheit(self, F):
 		# Stores Fahrenheit as Kelvin 
-		self.kelvin = self._makeLegalTemperature(self._fahrenheitToKelvin(F))
+		self.kelvin = self._fahrenheitToKelvin(F)
 	@fahrenheit.getter
 	def fahrenheit(self):
 		# Retrieves Fahrenheit from Kelvin

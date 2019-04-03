@@ -6,37 +6,23 @@ import sys
 sys.path.append('../')
 import temperature
 
-from decimal import *
-
-
-'''
-Because floats introduce miniscule inaccuracies,
-it's important that we round to two places when comparing.
-'''
-TWOPLACES = Decimal(10) ** -2 #same as Decimal('0.01')
-def _round(rawTemperature):
-    return Decimal(rawTemperature).quantize(TWOPLACES)
 
 class TestTemperatureMethods(unittest.TestCase):
-
-    
 
     # Each test, constructs new temperature object        
     def setUp(self):
         self.temperature = temperature.Temperature()
 
-
-
     def test__celsiusToKelvin(self):
-
-        self.assertEqual(100, _round(100))
-
         # Reduces verbosity of code
-        def test(C, K):
-            self.assertEqual(Decimal(C), _round(self.temperature._celsiusToKelvin(K)))
+        def runTest(C, K):
+            self.assertEqual(K, self.temperature._celsiusToKelvin(C))
         
-        test(373.15, 100)
-        test(173.15, -100)
+        runTest(373.15, 100)
+        runTest(173.15, -100)
+        # runTest(0, 273.15)
+        runTest(-100, 173.15)
+        runTest(-273.15, 0)
 
 if __name__ == '__main__':
     # if test is being run directly
