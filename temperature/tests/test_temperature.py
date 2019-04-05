@@ -73,6 +73,18 @@ class TestTemperatureMethods(unittest.TestCase):
         runTest(15, 27)
         runTest(100, 180)
 
+    def test__romerToKelvin(self):
+        def runTest(Ro, K):
+            self._compare(self.temperature._romerToKelvin(Decimal(Ro)), K)
+
+        runTest(21.6, 300.01)
+
+    def test__kelvinToRomer(self):
+        def runTest(K, Ro):
+            self._compare(self.temperature._kelvinToRomer(Decimal(K)), Ro)
+
+        runTest(180, -41.40)
+
 
 if __name__ == '__main__':
     # if test is being run directly

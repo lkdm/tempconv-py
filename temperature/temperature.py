@@ -37,6 +37,10 @@ class Temperature:
         return self._round((Decimal(Ra) * ((Decimal(5) / Decimal(9)))))
     def _kelvinToRankine(self, K):
         return self._round(Decimal(K) * Decimal(1.8))
+    def _romerToKelvin(self, Ro):
+        return self._round(((Decimal(Ro) - Decimal(7.5)) * Decimal(40) / Decimal(21)) + Decimal(273.15))
+    def _kelvinToRomer(self, K):
+        return self._round(((Decimal(K) - Decimal(273.15)) * (Decimal(21) / Decimal(40))) + Decimal(7.5))
 
     '''
     Syntactic sugar methods. These allow the conversion to happen in the background.
@@ -79,5 +83,18 @@ class Temperature:
     def rankine(self):
         # Retrieves Rankine from Kelvin
         return self._kelvinToRankine(self.kelvin)
+
+    # Getters & Setters to handle Romer as Kelvin
+    @property
+    def romer(self):
+        pass
+    @romer.setter
+    def romer(self, Ro):
+        # Stores Romer as Kelvin
+        self.kelvin = self._romerToKelvin(Ro)
+    @romer.getter
+    def romer(self):
+        # Retrieves Romer from Kelvin
+        return self._kelvinToRomer(self.kelvin)
 
 # Thanks for reading :)
