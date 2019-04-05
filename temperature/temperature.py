@@ -6,7 +6,9 @@ Author	https://github.com/luknuk
 '''
 
 # We use decimal rather than Float, because Floats are never accurate.
-from decimal import *
+from decimal import Decimal
+from decimal import getcontext
+from decimal import ROUND_HALF_EVEN
 
 class Temperature:
     '''

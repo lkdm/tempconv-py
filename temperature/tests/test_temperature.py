@@ -6,7 +6,9 @@ import sys
 sys.path.append('../')
 import temperature
 
-from decimal import *
+from decimal import Decimal
+from decimal import getcontext
+from decimal import ROUND_HALF_EVEN
 
 class TestTemperatureMethods(unittest.TestCase):
 
