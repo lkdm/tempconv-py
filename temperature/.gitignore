@@ -2,7 +2,9 @@
 *.pyc
 .DS_Store
 __pycache__/
-temperature/__pycache__/
+/temperature/__pycache__/
 /temperature/*.swp
 /temperature/*.pyc
 /temperature/.DS_Store
+/temperature/examples/*.swp
+/temperature/tests/*.swp
