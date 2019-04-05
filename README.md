@@ -52,3 +52,7 @@ The library works by using Python decorators, setters, and getters to automatica
 The aim of this library is to provide easy-to-use syntax for Temperature conversion. But because the library does two calculations to convert from Celsius to Fahrenheit, it goes without saying that it isn't the best choice for large-scale massively parallel computing operations. But you wouldn't be using a Python library for that, would you?
 
 Performance can be improved by converting directly from Fahrenheit to Celsius... Or using something like C or Fortran.
+
+## Testing
+
+To test the library, run the testing library.
