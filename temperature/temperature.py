@@ -33,7 +33,11 @@ class Temperature:
         return self._round((Decimal(F) - Decimal(32)) / Decimal(1.8) + Decimal(273.15))
     def _kelvinToFahrenheit(self, K):
         return self._round((Decimal(K) - Decimal(273.15)) * Decimal(1.8) + Decimal(32))
-    
+    def _rankineToKelvin(self, Ra):
+        return self._round((Decimal(Ra) * ((Decimal(5) / Decimal(9)))))
+    def _kelvinToRankine(self, K):
+        return self._round(Decimal(K) * Decimal(1.8))
+
     '''
     Syntactic sugar methods. These allow the conversion to happen in the background.
     '''
@@ -62,5 +66,18 @@ class Temperature:
     def fahrenheit(self):
         # Retrieves Fahrenheit from Kelvin
         return self._kelvinToFahrenheit(self.kelvin)
+
+    # Getters & Setters to handle Rankine as Kelvin
+    @property
+    def rankine(self):
+        pass
+    @rankine.setter
+    def rankine(self, Ra):
+        # Stores Rankine as Kelvin
+        self.kelvin = self._rankineToKelvin(Ra)
+    @rankine.getter
+    def rankine(self):
+        # Retrieves Rankine from Kelvin
+        return self._kelvinToRankine(self.kelvin)
 
 # Thanks for reading :)

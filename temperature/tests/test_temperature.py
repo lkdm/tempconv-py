@@ -59,6 +59,20 @@ class TestTemperatureMethods(unittest.TestCase):
         runTest(0, -459.67)
         runTest(255.37, 0)
 
+    def test__rankineToKelvin(self):
+        def runTest(Ra, K):
+            self._compare(self.temperature._rankineToKelvin(Decimal(Ra)), K)
+
+        runTest(153, 85)
+        runTest(100, 55.56)
+
+    def test__kelvinToRankine(self):
+        def runTest(K, Ra):
+            self._compare(self.temperature._kelvinToRankine(Decimal(K)), Ra)
+
+        runTest(15, 27)
+        runTest(100, 180)
+
 
 if __name__ == '__main__':
     # if test is being run directly
