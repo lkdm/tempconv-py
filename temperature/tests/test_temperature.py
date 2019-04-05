@@ -24,9 +24,6 @@ class TestTemperatureMethods(unittest.TestCase):
     def _compare(self, input, testcase):
         self.assertEqual(input, self._round(testcase))
 
-
-    # Todo: Add test loop
-
     # Each test, constructs new temperature object        
     def setUp(self):
         self.temperature = temperature.Temperature()
@@ -39,9 +36,20 @@ class TestTemperatureMethods(unittest.TestCase):
         runTest(100, 373.15)
         runTest(0, 273.15)
 
+    def test__kelvinToCelsius(self):
+        def runTest(K, C):
+            self._compare(self.temperature._kelvinToCelsius(Decimal(K)), C)
 
+        runTest(0, -273.15)
+        runTest(1389.381, 1116.23)
 
+    def test__fahrenheitToKelvin(self):
+        def runTest(F, K):
+            self._compare(self.temperature._fahrenheitToKelvin(Decimal(F)), K)
 
+        runTest(0, 255.37)
+        runTest(-459.67, 0)
+        runTest(838.32, 721.11)
 
 if __name__ == '__main__':
     # if test is being run directly
