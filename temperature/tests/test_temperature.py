@@ -23,7 +23,7 @@ class TestTemperatureMethods(unittest.TestCase):
     def _compare(self, input, testcase):
         self.assertEqual(input, self._round(testcase))
 
-    # Each test, constructs new temperature object        
+    # Each test, constructs new temperature object
     def setUp(self):
         self.temperature = temperature.Temperature()
 
