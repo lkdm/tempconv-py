@@ -11,6 +11,9 @@ import temperature
 t = temperature.Temperature()
 
 DEGREES = "°"
+DEGREES_C = DEGREES + "C"
+DEGREES_F = DEGREES + "F"
+KELVINS = "K"
 
 t.fahrenheit = 100
-print(str(t.celsius) + DEGREES + " C")
+print(str(t.celsius) + DEGREES_C)

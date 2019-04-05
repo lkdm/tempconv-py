@@ -1,6 +1,11 @@
-# Temperature library
-# todo: Add formatting method
+'''
+temperature.py
 
+The easiest standalone temperature conversion library
+Author	https://github.com/luknuk
+'''
+
+# We use decimal rather than Float, because Floats are never accurate.
 from decimal import *
 
 class Temperature:
@@ -10,7 +15,7 @@ class Temperature:
 	def __init__(self):
 		pass
 	'''
-	Private method. Ensures temperatures round to two decimal places.
+	Ensures temperatures round to two decimal places.
 	'''
 	def _round(self, number):
 		# Precision includes all digits, not just after decimal point.
@@ -18,7 +23,7 @@ class Temperature:
 		return Decimal(number).quantize(Decimal('.01'), rounding=ROUND_HALF_EVEN)
 
 	'''
-	Conversion methods. These do the heavy lifting.
+	Conversion methods. These do the actual conversion.
 	'''
 	def _celsiusToKelvin(self, C):
 		return self._round(Decimal(C) + Decimal(273.15))
@@ -30,7 +35,7 @@ class Temperature:
 		return self._round((Decimal(K) - Decimal(273.15)) * Decimal(1.8) + Decimal(32))
 	
 	'''
-	Syntactic sugar methods. Used to do conversion in background.
+	Syntactic sugar methods. These allow the conversion to happen in the background.
 	'''
 	# Getters & Setters to handle Celsius as Kelvin
 	@property
@@ -38,7 +43,7 @@ class Temperature:
 		pass
 	@celsius.setter
 	def celsius(self, C):
-		# Stores Kelvin & Celsius
+		# Stores Celsius as Kelvin
 		self.kelvin = self._celsiusToKelvin(C)
 	@celsius.getter
 	def celsius(self):
@@ -57,3 +62,5 @@ class Temperature:
 	def fahrenheit(self):
 		# Retrieves Fahrenheit from Kelvin
 		return self._kelvinToFahrenheit(self.kelvin)
+
+# Thanks for reading :)
