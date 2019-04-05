@@ -23,14 +23,14 @@ class Temperature:
 	def _celsiusToKelvin(self, C):
 		return self._round(Decimal(C) + Decimal(273.15))
 	def _kelvinToCelsius(self, K):
-		return K - 273.15
+		return self._round(Decimal(K) - Decimal(273.15))
 	'''
 	Private Fahrenheit/Kelvin conversions
 	'''
 	def _fahrenheitToKelvin(self, F):
-		return 5/9 * (F - 32) + 273
+		return self._round(Decimal(5/9) * (Decimal(F) - Decimal(32)) + Decimal(273))
 	def _kelvinToFahrenheit(self, K):
-		return 9/5 * (K - 273) + 32
+		return self._round(Decimal(9/5) * (Decimal(K) - Decimal(273)) + Decimal(32))
 
 	'''
 	Handles Celsius as Kelvin

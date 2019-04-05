@@ -18,18 +18,30 @@ class TestTemperatureMethods(unittest.TestCase):
         getcontext().prec = 6
         return Decimal(number).quantize(Decimal('.01'), rounding=ROUND_HALF_EVEN)
 
+    '''
+    Reduces code verbosity in test methods
+    '''
+    def _compare(self, input, testcase):
+        self.assertEqual(input, self._round(testcase))
+
+
+    # Todo: Add test loop
+
     # Each test, constructs new temperature object        
     def setUp(self):
         self.temperature = temperature.Temperature()
 
     def test__celsiusToKelvin(self):
         # Reduces verbosity of code
-        def runTest(K, C):
-            self.assertEqual(self._round(K), self.temperature._celsiusToKelvin(Decimal(C)))
+        def runTest(C, K):
+            self._compare(self.temperature._celsiusToKelvin(Decimal(C)), K)
         
-        runTest(373.15, 100)
-        runTest(173.15, -100)
-        runTest(0, -273.15)
+        runTest(100, 373.15)
+        runTest(0, 273.15)
+
+
+
+
 
 if __name__ == '__main__':
     # if test is being run directly
