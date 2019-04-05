@@ -51,6 +51,14 @@ class TestTemperatureMethods(unittest.TestCase):
         runTest(-459.67, 0)
         runTest(838.32, 721.11)
 
+    def test__kelvinToFahrenheit(self):
+        def runTest(K, F):
+            self._compare(self.temperature._kelvinToFahrenheit(Decimal(K)), F)
+
+        runTest(0, -459.67)
+        runTest(255.37, 0)
+
+
 if __name__ == '__main__':
     # if test is being run directly
     unittest.main()
