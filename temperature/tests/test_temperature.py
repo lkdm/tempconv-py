@@ -10,17 +10,14 @@ from decimal import *
 
 class TestTemperatureMethods(unittest.TestCase):
 
-    '''
-    _round exists because arguments are passed into runTest as a float.
-	This method parallels _round in temperature class. To clean up the code, they should be merged
-    '''
+
+
+    # Ensures temperatures round to two places. Exists here because test cases are passed into runTest() as a Float.
     def _round(self, number):
         getcontext().prec = 6
         return Decimal(number).quantize(Decimal('.01'), rounding=ROUND_HALF_EVEN)
 
-    '''
-    Reduces code verbosity in test methods
-    '''
+    # Compares input to testcase, and rounds | Exists to lessen verbosity
     def _compare(self, input, testcase):
         self.assertEqual(input, self._round(testcase))
 
@@ -28,8 +25,12 @@ class TestTemperatureMethods(unittest.TestCase):
     def setUp(self):
         self.temperature = temperature.Temperature()
 
+    '''
+    Tests conversion methods.
+	Each has a runTest(), to reduce verbosity of code
+    '''
+
     def test__celsiusToKelvin(self):
-        # Reduces verbosity of code
         def runTest(C, K):
             self._compare(self.temperature._celsiusToKelvin(Decimal(C)), K)
         

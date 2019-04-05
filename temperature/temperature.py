@@ -10,7 +10,7 @@ class Temperature:
 	def __init__(self):
 		pass
 	'''
-	Ensures that temperature is returned with two decimal places
+	Private method. Ensures temperatures round to two decimal places.
 	'''
 	def _round(self, number):
 		# Precision includes all digits, not just after decimal point.
@@ -18,22 +18,21 @@ class Temperature:
 		return Decimal(number).quantize(Decimal('.01'), rounding=ROUND_HALF_EVEN)
 
 	'''
-	Private Kelvin/Celsius conversions
+	Conversion methods. These do the heavy lifting.
 	'''
 	def _celsiusToKelvin(self, C):
 		return self._round(Decimal(C) + Decimal(273.15))
 	def _kelvinToCelsius(self, K):
 		return self._round(Decimal(K) - Decimal(273.15))
-	'''
-	Private Fahrenheit/Kelvin conversions
-	'''
 	def _fahrenheitToKelvin(self, F):
 		return self._round((Decimal(F) - Decimal(32)) / Decimal(1.8) + Decimal(273.15))
 	def _kelvinToFahrenheit(self, K):
 		return self._round((Decimal(K) - Decimal(273.15)) * Decimal(1.8) + Decimal(32))
+	
 	'''
-	Handles Celsius as Kelvin
+	Syntactic sugar methods. Used to do conversion in background.
 	'''
+	# Getters & Setters to handle Celsius as Kelvin
 	@property
 	def celsius(self):
 		pass
@@ -46,9 +45,7 @@ class Temperature:
 		# Retrieves Celsius from Kelvin
 		return self._kelvinToCelsius(self.kelvin)
 
-	'''
-	Handles Fahrenheit as Kelvin
-	'''
+	# Getters & Setters to handle Fahrenheit as Kelvin
 	@property
 	def fahrenheit(self):
 		pass
