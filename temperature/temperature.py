@@ -1,4 +1,5 @@
 # Temperature library
+# todo: Add formatting method
 
 from decimal import *
 
@@ -8,12 +9,19 @@ class Temperature:
 	'''
 	def __init__(self):
 		pass
-	
+	'''
+	Ensures that temperature is returned with two decimal places
+	'''
+	def _round(self, number):
+		# Precision includes all digits, not just after decimal point.
+		getcontext().prec = 6
+		return Decimal(number).quantize(Decimal('.01'), rounding=ROUND_HALF_EVEN)
+
 	'''
 	Private Kelvin/Celsius conversions
 	'''
 	def _celsiusToKelvin(self, C):
-		return round(C + 273.15, 2)
+		return self._round(Decimal(C) + Decimal(273.15))
 	def _kelvinToCelsius(self, K):
 		return K - 273.15
 	'''
