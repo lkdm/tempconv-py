@@ -27,7 +27,7 @@ class TestTemperatureMethods(unittest.TestCase):
 
     '''
     Tests conversion methods.
-	Each has a runTest(), to reduce verbosity of code
+    Each has a runTest(), to reduce verbosity of code
     '''
 
     def test__celsiusToKelvin(self):
