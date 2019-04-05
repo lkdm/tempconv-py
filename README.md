@@ -4,14 +4,18 @@ The aim of the temperature conversion library is to create an easy to use, synta
 
 Instead of...
 
-`celsius = 100
+```python
+celsius = 100
 fahrenheit = t.convertToFahrenheit(celsius)
-print(fahrenheit) # 212 F`
+print(fahrenheit) # 212 F
+```
 
 We do this...
 
-`t.celsius = 100
-print(t.fahrenheit) # 212 F`
+```python
+t.celsius = 100
+print(t.fahrenheit) # 212 F
+```
 
 ## Usage
 
@@ -37,11 +41,11 @@ OR
 
 Here are some print examples:
 
-`print(t.celsius)
+`print(t.celsius)`
 
-print(t.fahrenheit)
+`print(t.fahrenheit)`
 
-print(t.kelvin)`
+`print(t.kelvin)`
 
 ## How it works
 
