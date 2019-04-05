@@ -41,6 +41,10 @@ class Temperature:
         return self._round(((Decimal(Ro) - Decimal(7.5)) * Decimal(40) / Decimal(21)) + Decimal(273.15))
     def _kelvinToRomer(self, K):
         return self._round(((Decimal(K) - Decimal(273.15)) * (Decimal(21) / Decimal(40))) + Decimal(7.5))
+    def _reaumurToKelvin(self, Re):
+        return self._round((Decimal(Re) * Decimal(1.25)) + Decimal(273.15))
+    def _kelvinToReaumur(self, K):
+        return self._round((Decimal(K) - Decimal(273.15)) * Decimal(0.8))
 
     '''
     Syntactic sugar methods. These allow the conversion to happen in the background.
@@ -96,5 +100,18 @@ class Temperature:
     def romer(self):
         # Retrieves Romer from Kelvin
         return self._kelvinToRomer(self.kelvin)
+
+    # Getters & Setters to handle Reaumur as Kelvin
+    @property
+    def reaumur(self):
+        pass
+    @reaumur.setter
+    def reaumur(self, Re):
+        # Stores Reaumur as Kelvin
+        self.kelvin = self._reaumurToKelvin(Re)
+    @reaumur.getter
+    def reaumur(self):
+        # Retrieves Reaumur from Kelvin
+        return self._kelvinToReaumur(self.kelvin)
 
 # Thanks for reading :)
