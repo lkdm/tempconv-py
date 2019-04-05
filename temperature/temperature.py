@@ -28,7 +28,8 @@ class Temperature:
 	Private Fahrenheit/Kelvin conversions
 	'''
 	def _fahrenheitToKelvin(self, F):
-		return self._round(Decimal(5/9) * (Decimal(F) - Decimal(32)) + Decimal(273))
+		return self._round((Decimal(F) - Decimal(32)) / Decimal(1.8) + Decimal(273.15))
+		# return self._round(Decimal(5/9) * (Decimal(F) - Decimal(32)) + Decimal(273))
 	def _kelvinToFahrenheit(self, K):
 		return self._round(Decimal(9/5) * (Decimal(K) - Decimal(273)) + Decimal(32))
 
