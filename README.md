@@ -1,4 +1,4 @@
-# temperature-conversion.py
+# pretty-temperature-conversion-library
 
 This module can convert from/to Kelvin, Celsius, Rankine, Reaumur[1], and Romer[1] using formulas from Wikipedia.org[2].
 
