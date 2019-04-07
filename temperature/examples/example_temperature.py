@@ -17,3 +17,6 @@ KELVINS = "K"
 
 t.fahrenheit = 100
 print(str(t.celsius) + DEGREES_C)
+
+# an f-string can also be used to avoid the need to use str()
+# print(f'{t.celsius}{DEGREES_C}')

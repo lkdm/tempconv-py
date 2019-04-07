@@ -6,7 +6,9 @@ import sys
 sys.path.append('../')
 import temperature
 
-from decimal import *
+from decimal import Decimal
+from decimal import getcontext
+from decimal import ROUND_HALF_EVEN
 
 class TestTemperatureMethods(unittest.TestCase):
 
@@ -21,13 +23,13 @@ class TestTemperatureMethods(unittest.TestCase):
     def _compare(self, input, testcase):
         self.assertEqual(input, self._round(testcase))
 
-    # Each test, constructs new temperature object        
+    # Each test, constructs new temperature object
     def setUp(self):
         self.temperature = temperature.Temperature()
 
     '''
     Tests conversion methods.
-	Each has a runTest(), to reduce verbosity of code
+    Each has a runTest(), to reduce verbosity of code
     '''
 
     def test__celsiusToKelvin(self):
@@ -58,6 +60,51 @@ class TestTemperatureMethods(unittest.TestCase):
 
         runTest(0, -459.67)
         runTest(255.37, 0)
+
+    def test__rankineToKelvin(self):
+        def runTest(Ra, K):
+            self._compare(self.temperature._rankineToKelvin(Decimal(Ra)), K)
+
+        runTest(153, 85)
+        runTest(100, 55.56)
+
+    def test__kelvinToRankine(self):
+        def runTest(K, Ra):
+            self._compare(self.temperature._kelvinToRankine(Decimal(K)), Ra)
+
+        runTest(15, 27)
+        runTest(100, 180)
+
+    def test__romerToKelvin(self):
+        def runTest(Ro, K):
+            self._compare(self.temperature._romerToKelvin(Decimal(Ro)), K)
+
+        runTest(21.6, 300.01)
+
+    def test__kelvinToRomer(self):
+        def runTest(K, Ro):
+            self._compare(self.temperature._kelvinToRomer(Decimal(K)), Ro)
+
+        runTest(180, -41.40)
+
+    def test__reaumurToKelvin(self):
+        def runTest(Re, K):
+            self._compare(self.temperature._reaumurToKelvin(Decimal(Re)), K)
+
+        runTest(125, 429.40)
+
+    def test__kelvinToReaumur(self):
+        def runTest(K, Re):
+            self._compare(self.temperature._kelvinToReaumur(Decimal(K)), Re)
+
+        runTest(180, -74.52)
+
+    def test__kelvinToReaumur(self):
+        def runTest(K, D):
+            self._compare(self.temperature._kelvinToReaumur(Decimal(K)), D)
+
+        runTest(106, 400.72)
+        runTest(0,559.72)
 
 
 if __name__ == '__main__':

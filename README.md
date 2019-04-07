@@ -1,17 +1,23 @@
 # temperature-conversion.py
 
+This module can convert from/to Kelvin, Celsius, Rankine, Reaumur[1], and Romer[1] using formulas from Wikipedia.org[2].
+
 The aim of the temperature conversion library is to create an easy to use, syntactically simple way to convert between temperature units of measurement. It does not require the developer, who is referencing the library, to use a special function to convert. Instead, the conversion happens in the background when the original temperature is set, and when the new temperature is referenced.
 
 Instead of...
 
-`celsius = 100
+```python
+celsius = 100
 fahrenheit = t.convertToFahrenheit(celsius)
-print(fahrenheit) # 212 F`
+print(fahrenheit) # 212 F
+```
 
 We do this...
 
-`t.celsius = 100
-print(t.fahrenheit) # 212 F`
+```python
+t.celsius = 100
+print(t.fahrenheit) # 212 F
+```
 
 ## Usage
 
@@ -37,11 +43,11 @@ OR
 
 Here are some print examples:
 
-`print(t.celsius)
+`print(t.celsius)`
 
-print(t.fahrenheit)
+`print(t.fahrenheit)`
 
-print(t.kelvin)`
+`print(t.kelvin)`
 
 ## How it works
 
@@ -56,3 +62,9 @@ Performance can be improved by converting directly from Fahrenheit to Celsius...
 ## Testing
 
 To test the library, run the testing library.
+
+## Footnotes
+
+[1] Used in this library without diacritical marks (i.e. not Réaumur or Rømer)
+
+[2] https://en.wikipedia.org/wiki/Conversion_of_units_of_temperature
