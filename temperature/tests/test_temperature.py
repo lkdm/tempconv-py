@@ -99,6 +99,13 @@ class TestTemperatureMethods(unittest.TestCase):
 
         runTest(180, -74.52)
 
+    def test__kelvinToReaumur(self):
+        def runTest(K, D):
+            self._compare(self.temperature._kelvinToReaumur(Decimal(K)), D)
+
+        runTest(106, 400.72)
+        runTest(0,559.72)
+
 
 if __name__ == '__main__':
     # if test is being run directly

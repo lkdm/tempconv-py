@@ -47,6 +47,10 @@ class Temperature:
         return self._round((Decimal(Re) * Decimal(1.25)) + Decimal(273.15))
     def _kelvinToReaumur(self, K):
         return self._round((Decimal(K) - Decimal(273.15)) * Decimal(0.8))
+    def _delisleToKelvin(self, D):
+        return self._round(Decimal(373.15) - D * Decimal(2) / Decimal(3))
+    def _kelvinToReaumur(self, K):
+        return self._round((Decimal(373.15) - K) * (Decimal(3) / Decimal(2)))
 
     '''
     Syntactic sugar methods. These allow the conversion to happen in the background.
@@ -114,6 +118,19 @@ class Temperature:
     @reaumur.getter
     def reaumur(self):
         # Retrieves Reaumur from Kelvin
+        return self._kelvinToReaumur(self.kelvin)
+
+    # Getters & Setters to handle Delisle as Kelvin
+    @property
+    def Delisle(self):
+        pass
+    @Delisle.setter
+    def Delisle(self, D):
+        # Stores Delisle as Kelvin
+        self.kelvin = self._delisleToKelvin(D)
+    @Delisle.getter
+    def Delisle(self):
+        # Retrieves Delisle from Kelvin
         return self._kelvinToReaumur(self.kelvin)
 
 # Thanks for reading :)
